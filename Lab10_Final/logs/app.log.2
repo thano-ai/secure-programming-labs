@@ -1,0 +1,99 @@
+2025-09-17 10:49:17,472 [ERROR] in routes: Unhandled Exception: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+Traceback (most recent call last):
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask_login\utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask_login\login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\helpers.py", line 284, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\werkzeug\exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2025-09-17 10:49:28,396 [ERROR] in routes: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-17 10:51:31,515 [ERROR] in app: Exception on /register [POST]
+Traceback (most recent call last):
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\UST\Secure Programming\Summer Term\Labs\Lab10_Final\app\routes.py", line 35, in register
+    db.session.commit()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\scoping.py", line 599, in commit
+    return self._proxied.commit()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\UST\Secure Programming\Summer Term\Labs\venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: INSERT INTO user (username, email, password_hash, role, created_at) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('test', 'test11554@test.com', 'scrypt:32768:8:1$84OdCn4Bj21ctt3v$69bc352739f9a087e44db34adc3e9155eae1f046c67676dc322772ab4f644ada376b4834c600febb55c546496cd48370bace0e7a7f966e07b2dff85d160fbca7', 'user', '2025-09-17 07:51:31.514639')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

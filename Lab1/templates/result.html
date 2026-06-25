@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Hello, {{data}} </h2>
+        {% for i in range(5) %}
+        {{ data }}
+        {% endfor %}
+
+        <br>
+        {% if username == "Ali" %}
+        <p>Welcome {{username}}</p>
+        {% else %}
+        <p>Welcome Stranger {{username}}</p>
+        {% endif %}
+        <br>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

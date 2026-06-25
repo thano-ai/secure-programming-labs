@@ -1,0 +1,16 @@
+<h2>Secure Page</h2>
+<form method="POST">
+    <input type="text" name="name">
+    <input type="submit">
+</form>
+<!--jinja2-->
+<ul>
+    {% for msg in messages %}
+        <li>{{ msg   }}</li> <!-- Secure: autoescaping -->
+    {% endfor %}
+
+</ul>
+
+<a href="/">Home</a>
+
+<script></script>

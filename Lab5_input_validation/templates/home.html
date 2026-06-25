@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Input Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        .btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        .warning {
+            color: yellow
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Input Validation App</h1>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Form for adding user -->
+    <div class="form-container">
+        <form method="POST">
+            <label for="username">Username (Alphanumeric, 3-20 chars):</label><br>
+            <input type="text" id="username" name="username" class="input" required><br><br>
+
+            <label for="age">Age (Numeric, Positive):</label><br>
+            <input type="text" id="age" name="age" class="input" required><br><br>
+
+            <label for="message">Message (10-200 chars):</label><br>
+            <textarea id="message" name="message" class="input" required></textarea><br><br>
+
+            <label for="email_input">Email (Valid Email Format):</label><br>
+            <input type="email" id="email_input" name="email_input" class="input" required><br><br>
+
+            <label for="password">Password (Letters, Numbers, Underscores, Dashes):</label><br>
+            <input type="text" id="password" name="password" class="input" required><br><br>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Users list -->
+    <h2>Existing Users</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Age</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.age }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

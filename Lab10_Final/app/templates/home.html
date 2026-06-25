@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Your Tasks</h2>
+</div>
+
+<form action="{{ url_for('create_task') }}" method="post" class="mb-3 row g-2">
+    <div class="col-md-5">
+        <input type="text" name="title" class="form-control" placeholder="Task title" required>
+    </div>
+    <div class="col-md-5">
+        <input type="text" name="description" class="form-control" placeholder="Description">
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Add Task</button>
+    </div>
+</form>
+
+<ul class="list-group">
+    {% for task in tasks %}
+    <li class="list-group-item d-flex justify-content-between align-items-center {% if task.completed %}list-group-item-success{% endif %}">
+        <div>
+            {% if task.completed %}<s>{{ task.title }}</s>{% else %}{{ task.title }}{% endif %}
+            {% if task.description %}- {{ task.description }}{% endif %}
+        </div>
+        <div>
+            {% if not task.completed %}
+            <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn btn-sm btn-success me-1">Complete</a>
+            {% endif %}
+            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

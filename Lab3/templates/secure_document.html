@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document {{ doc_id }}</title>
+</head>
+<body>
+    <h1>Document {{ doc_id }} (Secure Access)</h1>
+    <p>Owner: {{ document.owner }}</p>
+    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+        {{ document.content }}
+    </div>
+    <p><a href="/">Back to dashboard</a></p>
+</body>
+</html>

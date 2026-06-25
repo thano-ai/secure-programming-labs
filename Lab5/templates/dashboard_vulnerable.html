@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard (Vulnerable)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome {{ role|capitalize }}: {{ username }}</h2>
+        {% if role == 'admin' %}
+        <h3>All Users:</h3>
+        <table border="1">
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+<!--                <th>Password</th>-->
+
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+<!--                    <td>{{ user[1] }}</td>-->
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h3>Your Data: </h3>
+            <table border="2">
+                <tr>
+                    <th>USERNAME</th>
+                    <th>PASSWORD</th>
+                    <th>ROLE</th>
+                </tr>
+                <tr>
+                    <td>{{ users[0] }}</td>
+                    <td>{{ users[1] }}</td>
+                    <td>{{ users[2] }}</td>
+                </tr>
+            </table>
+            <h5>Your Tasks are Coming Soon !</h5>
+        {% endif %}
+
+        </table>
+        <br>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>

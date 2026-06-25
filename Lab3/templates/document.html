@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document {{ doc_id }}</title>
+</head>
+<body>
+    <h1>Document {{ doc_id }}</h1>
+    <p>Owner: {{ document.owner }}</p>
+    <p>Current user: {{ username }}</p>
+    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+        {{ document.content }}
+    </div>
+    <p><a href="/">Back to dashboard</a></p>
+{% if username == document.owner %}
+<button type="button">ADD</button>
+{% endif %}
+</body>
+</html>

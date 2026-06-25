@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Your balance: ${{ balance }}</p>
+
+    <h2>Transfer Money</h2>
+    <form action="/transfer" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="text" name="recipient" placeholder="Recipient" required>
+        <input type="number" name="amount" placeholder="Amount" required>
+        <button type="submit">Transfer</button>
+    </form>
+
+    <a href="{{ url_for('static', filename='malicious_site.html')}}">click me and win 10000$</a>
+
+    <p><a href="/logout">Logout</a></p>
+</body>
+</html>

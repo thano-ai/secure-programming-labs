@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>DOM XSS</title></head>
+<body>
+    <h1>Welcome</h1>
+    <div id="output">
+
+    </div>
+
+
+
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+
+    function sanitize(str) {
+        const temp = document.createElement("div");
+        temp.textContent = str;
+        return temp.innerHTML;
+    }
+
+    document.getElementById("output").innerHTML = sanitize(name);
+</script>
+
+</body>
+</html>

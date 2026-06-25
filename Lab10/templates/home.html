@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card shadow">
+        <div class="card-body text-center">
+            <h1 class="card-title">Welcome to the Flask Error Handling Demo</h1>
+            <p class="card-text">Try these examples:</p>
+            <div class="d-grid gap-2 col-md-6 mx-auto">
+                <a href="{{ url_for('divide', a=10, b=2) }}" class="btn btn-success">Safe Division (10/2)</a>
+                <a href="{{ url_for('divide', a=10, b=0) }}" class="btn btn-danger">Division by Zero (10/0)</a>
+                <a href="{{ url_for('force_error') }}" class="btn btn-warning">Force a 500 Error</a>
+                <a href="/non-existent-page" class="btn btn-info">Trigger a 404</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

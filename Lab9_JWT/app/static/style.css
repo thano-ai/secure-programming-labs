@@ -1,0 +1,17 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial;
+}
+.container {
+    margin: 100px auto;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px #ccc;
+    text-align: center;
+}
+input {
+    margin: 5px;
+    width: 90%;
+    padding: 8px;
+}

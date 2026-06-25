@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Account</title>
+    <style>
+        .error { color: red; }
+        .warning {color: yellow }
+        .alert { padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Your balance: ${{ balance }}</p>
+
+    <h2>Transfer Money</h2>
+    <form method="POST" action="{{ url_for('transfer') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div>
+            <label>Recipient:</label>
+            <input type="text" name="recipient" >
+            {% if form and form.recipient.errors %}
+                {% for error in form.recipient.errors %}
+                   <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div>
+            <label>Amount:</label>
+            <input type="number" name="amount">
+            {% if form and form.amount.errors %}
+                {% for error in form.amount.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <button type="submit">Transfer</button>
+    </form>
+
+        <a href="{{ url_for('static', filename='malicious_site.html')}}">click me and win 10000$</a>
+
+    <p><a href="/logout">Logout</a></p>
+</body>
+</html>

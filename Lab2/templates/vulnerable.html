@@ -1,0 +1,15 @@
+<h2>Vulnerable Page</h2>
+<form method="POST">
+    <input type="text" name="message" required>
+<!--    <input type="text" name="id" >-->
+    <input type="submit">
+</form>
+<!--jinja2-->
+<ul>
+<!--    <li> {{messages}}</li>-->
+    {% for i in x  %}
+    <li>{{ i | safe }}</li>
+    {% endfor %}
+</ul>
+
+<a href="/">Home</a>

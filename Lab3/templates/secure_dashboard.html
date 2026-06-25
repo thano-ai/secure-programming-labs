@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard (Secure)</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Your documents:</p>
+    <ul>
+        {% for doc_id in document_ids %}
+        <li><a href="{{ url_for('view_document', doc_id=doc_id) }}">Document {{ doc_id }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p><em>Note: You'll get an error if you try to access documents you don't own</em></p>
+
+    <p><a href="/logout">Logout</a></p>
+</body>
+</html>

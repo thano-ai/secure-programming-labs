@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="javascript" href="{{url_for('static', filename='javaScript.js')" }}>
+    <title>XSS Demo</title>
+
+</head>
+<body>
+    <h1>Lab 2: XSS Demo</h1>
+    <a href="/vulnerable">Vulnerable Page</a> | <a href="/secure">Secure Page</a>
+</body>
+</html>

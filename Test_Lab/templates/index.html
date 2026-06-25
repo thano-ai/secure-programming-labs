@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Test Flask Lab - First Project</h1>\
+    <form method="post" action="/test">
+        <label for="input">Enter your name: </label>
+    <input type="text" name="input">
+    <button type="submit">SEND</button>
+    </form>
+{% if name %}
+<p>{{name}}</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stored XSS</title>
+</head>
+<body>
+    <h2>Leave a Comment</h2>
+    <form method="POST">
+        <textarea name="comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>All Comments:</h3>
+    {% for c in comments %}
+        <p>{{ c | safe }}</p> <!-- vulnerable due to unsafe rendering -->
+    {% endfor %}
+</body>
+</html>
