@@ -1,10 +1,6 @@
 from flask import Flask, request, render_template, session, redirect, url_for
-from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
 app.secret_key = 'secret-key'
-app.config['WTF_CSRF_SECRET_KEY'] = 'dfghjkl;y7890'
-
-csrf = CSRFProtect(app)
 
 # Mock database
 users = {
@@ -50,40 +46,15 @@ def transfer():
     recipient = request.form['recipient']
 
     if recipient not in users:
-        return "المستلم غير موجود"
+        return "Recipient not found", 404
+
     if amount > users[session['username']]['balance']:
-        return "رصديك غير كافي"
+        return "Insufficient funds", 400
 
     users[session['username']]['balance'] -= amount
     users[recipient]['balance'] += amount
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # amount = int(request.form['amount'])
-    # recipient = request.form['recipient']
-    #
-    # if recipient not in users:
-    #     return "Recipient not found", 400
-    #
-    # if amount > users[session['username']]['balance']:
-    #     return "Insufficient funds", 400
-    #
-    # users[session['username']]['balance'] -= amount
-    # users[recipient]['balance'] += amount
-
     return redirect(url_for('home'))
-    # return render_template('transfer.html', message="Process Finished successfully")
 
 
 if __name__ == '__main__':

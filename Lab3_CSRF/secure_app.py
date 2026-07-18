@@ -29,37 +29,6 @@ class TransferForm(Form):
     ])
 
 
-
-# class TransferForm(From):
-#
-#     recipient = StringField('recipient', [
-#         validators.InputRequired(),
-#         validators.length(min=3, max=10)
-#     ])
-#
-#     amount = IntegerField('amount', [
-#         validators.InputRequired(),
-#         validators.NumberRange(min=100, max=10000)
-#     ])
-
-
-
-# Transfer Form with validation
-# class TransferForm(Form):
-#     # def __init__(self):
-#     #     pass
-#     recipient = StringField('Recipient', [
-#         validators.InputRequired(),
-#         validators.length(min=3, max=10),
-#     ])
-#     amount = IntegerField('Amount', [
-#         validators.InputRequired(),
-#         validators.NumberRange(min=100, max=1000)
-#     ])
-
-
-
-
 @app.route('/')
 def home():
     if 'username' in session:
@@ -69,7 +38,6 @@ def home():
                                balance=users[session['username']]['balance'],
                                form=form)
     return render_template('secure_login.html')
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -91,6 +59,7 @@ def logout():
     flash('You have been logged out', 'info')
     return redirect(url_for('home'))
 
+
 @app.route('/transfer', methods=['POST'])
 def transfer():
     if 'username' not in session:
@@ -104,10 +73,10 @@ def transfer():
         recipient = request.form['recipient']
 
         if recipient not in users:
-            return "Recipient Not found", 400
+            return "Recipient Not found", 404
 
         if amount > users[session['username']]['balance']:
-            return "Insuffecint Fund", 400
+            return "Insufficient Fund", 400
 
         users[session['username']]['balance'] -= amount
         users[recipient]['balance'] += amount
@@ -118,5 +87,7 @@ def transfer():
                            username=session['username'],
                            balance=users[session['username']]['balance'],
                            form=form)
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

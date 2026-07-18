@@ -9,7 +9,6 @@
 
     <h2>Transfer Money</h2>
     <form action="/transfer" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="text" name="recipient" placeholder="Recipient" required>
         <input type="number" name="amount" placeholder="Amount" required>
         <button type="submit">Transfer</button>
