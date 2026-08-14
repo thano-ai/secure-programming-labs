@@ -38,7 +38,6 @@ class User(UserMixin, db.Model):
     role = db.Column(db.String(50), nullable=False, default='user')
     login_attempts = db.Column(db.Integer, default=0)
     locked_until = db.Column(db.Float, default=0.0)
-    # active = db.Column(db.boolean, default=True)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
@@ -110,8 +109,7 @@ def login():
                 attempts_left = MAX_LOGIN_ATTEMPTS - user.login_attempts
                 flash(f'Invalid username or password. {attempts_left} attempts remaining.', 'danger')
             db.session.commit()
-        # if user.login_attempts >=10:
-        #     user.active = False
+
 
     return render_template('login.html')
 
